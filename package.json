@@ -1,0 +1,9 @@
+{
+  "name": "demyst-task",
+  "version": "1.0.0",
+  "description": "Demyst Task",
+  "main": "index.js",
+  "repository": "https://asankasri@bitbucket.org/asankasri/demyst-task.git",
+  "author": "Asanka Piyasekara <asankasri@gmail.com>",
+  "license": "MIT"
+}
