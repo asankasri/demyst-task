@@ -9,10 +9,12 @@ import { ValidatorFactoryInterface } from './ValidatorFactoryInterface';
 export class ConnectorBuilder {
   private parserFactory: ParserFactoryInterface;
   private validatorFactory: ValidatorFactoryInterface;
+  private simulation: boolean;
 
   constructor(private api: ConnectorInterface) {
     this.parserFactory = new DummyParserFactory();
     this.validatorFactory = new DummyValidatorFactory();
+    this.simulation = false;
   }
 
   withParserFactory(parserFactory: ParserFactoryInterface): ConnectorBuilder {
@@ -25,11 +27,16 @@ export class ConnectorBuilder {
     return this;
   }
 
+  withSimulation(shouldSimulate: boolean): ConnectorBuilder {
+    this.simulation = shouldSimulate;
+    return this;
+  }
+
   build(): ConnectorInterface {
     if (!this.api) {
       throw new Error('Error');
     }
 
-    return new Connector(this.api, this.parserFactory, this.validatorFactory);
+    return new Connector(this.api, this.parserFactory, this.validatorFactory, this.simulation);
   }
 }

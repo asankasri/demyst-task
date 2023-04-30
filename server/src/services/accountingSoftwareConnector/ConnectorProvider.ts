@@ -13,11 +13,12 @@ import { MYOBValidatorFactory } from './myobConnector/MYOBValidatorFactory';
 type data = {
   baseUrl: string;
   headers?: Record<string, unknown>;
+  simulation?: boolean;
 };
 
 export class ConnectorProvider {
   static getApi(name: ConnectorName, data: data): ConnectorInterface {
-    const { baseUrl, headers = {} } = data;
+    const { baseUrl, headers = {}, simulation = false } = data;
 
     if (!baseUrl) {
       throw Error('Invalid api information');
@@ -27,6 +28,7 @@ export class ConnectorProvider {
       return new ConnectorBuilder(new XeroApi(baseUrl, headers))
         .withParserFactory(new XeroParserFactory())
         .withValidatorFactory(new XeroValidatorFactory())
+        .withSimulation(simulation)
         .build();
     }
 
@@ -34,6 +36,7 @@ export class ConnectorProvider {
       return new ConnectorBuilder(new MYOBApi(baseUrl, headers))
         .withParserFactory(new MYOBParserFactory())
         .withValidatorFactory(new MYOBValidatorFactory())
+        .withSimulation(simulation)
         .build();
     }
 

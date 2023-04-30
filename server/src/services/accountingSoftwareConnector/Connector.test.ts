@@ -29,6 +29,8 @@ import {
   myobGetBalanceSheetConvertedResponse,
 } from './__data__/myob';
 
+import simulatedBalanceSheet from './__simulation_data__/balanceSheet';
+
 const xeroBaseUrl = 'https://mockedXeroBaseUrl';
 const xeroHeaders = {};
 
@@ -57,11 +59,15 @@ jest.mock('../../utils/httpClient', () => {
 });
 
 describe('Connector', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   const xeroApi = new XeroApi(xeroBaseUrl, xeroHeaders);
   const xeroParserFactory = new XeroParserFactory();
   const xeroValidatorFactory = new XeroValidatorFactory();
 
-  test('setters and getters', () => {
+  test('should able to call getters', () => {
     const dummyParserFactory = new DummyParserFactory();
     const dummyValidatorFactory = new DummyValidatorFactory();
 
@@ -70,13 +76,17 @@ describe('Connector', () => {
     expect(connector.getApi()).toBeInstanceOf(XeroApi);
     expect(connector.getParserFactory()).toBeInstanceOf(DummyParserFactory);
     expect(connector.getValidatorFactory()).toBeInstanceOf(DummyValidatorFactory);
+  });
 
-    connector.setParserFactory(xeroParserFactory);
-    connector.setValidatorFactory(xeroValidatorFactory);
+  test('should able to set simulation', () => {
+    const connector = new Connector(
+      xeroApi,
+      new DummyParserFactory(),
+      new DummyValidatorFactory(),
+      true,
+    );
 
-    expect(connector.getApi()).toBeInstanceOf(XeroApi);
-    expect(connector.getParserFactory()).toBeInstanceOf(XeroParserFactory);
-    expect(connector.getValidatorFactory()).toBeInstanceOf(XeroValidatorFactory);
+    expect(connector.getSimulation()).toBe(true);
   });
 
   describe('Xero Connector', () => {
@@ -120,6 +130,23 @@ describe('Connector', () => {
         const errObj = { ...expectedErrorObj };
         errObj.response.data.error.message = 'Invalid fromDate value';
         expect(thrownError).toEqual(errObj);
+      });
+
+      test('should return simulated data if simulation is set', async () => {
+        const simulatedXeroConnector = new Connector(
+          xeroApi,
+          xeroParserFactory,
+          xeroValidatorFactory,
+          true,
+        );
+
+        const balanceSheet = await simulatedXeroConnector.getBalanceSheet(
+          xeroGetBalanceSheetRequest,
+        );
+
+        expect(performRequestSpy).not.toHaveBeenCalled();
+        expect(performGetRequestSpy).not.toHaveBeenCalled();
+        expect(balanceSheet).toEqual(simulatedBalanceSheet);
       });
     });
   });

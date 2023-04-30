@@ -36,4 +36,13 @@ describe('ConnectorProvider', () => {
       });
     }).toThrow();
   });
+
+  test('should provide Connector with simulation', () => {
+    const xeroConnector = ConnectorProvider.getApi(ConnectorName.XERO, {
+      baseUrl: 'mockedXeroBaseUrl',
+      simulation: true,
+    });
+
+    expect(xeroConnector['simulation']).toBe(true);
+  });
 });

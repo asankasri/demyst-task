@@ -5,20 +5,18 @@ import { ParserInterface } from './ParserInterface';
 import { ValidatorInterface } from './ValidatorInterface';
 import { ApiName } from './enums';
 import { GetBalanceSheetRequest, GetBalanceSheetResponse, ErrorWithMessage } from './types';
+import simulatedBalanceSheet from './__simulation_data__/balanceSheet';
 
 export class Connector implements ConnectorInterface {
   constructor(
     private api: ConnectorInterface,
     private parserFactory: ParserFactoryInterface,
     private validatorFactory: ValidatorFactoryInterface,
+    private simulation: boolean = false,
   ) {}
 
-  setParserFactory(parserFactory: ParserFactoryInterface): void {
-    this.parserFactory = parserFactory;
-  }
-
-  setValidatorFactory(validatorFactory: ValidatorFactoryInterface): void {
-    this.validatorFactory = validatorFactory;
+  getApi(): ConnectorInterface {
+    return this.api;
   }
 
   getParserFactory(): ParserFactoryInterface {
@@ -29,8 +27,8 @@ export class Connector implements ConnectorInterface {
     return this.validatorFactory;
   }
 
-  getApi(): ConnectorInterface {
-    return this.api;
+  getSimulation(): boolean {
+    return this.simulation;
   }
 
   public async getBalanceSheet(req: GetBalanceSheetRequest): Promise<GetBalanceSheetResponse> {
@@ -42,6 +40,10 @@ export class Connector implements ConnectorInterface {
       validator.validate(req);
     } catch (err) {
       this.throwValidationError((err as ErrorWithMessage).message);
+    }
+
+    if (this.simulation) {
+      return simulatedBalanceSheet;
     }
 
     const request = parser.convertRequest(req);
