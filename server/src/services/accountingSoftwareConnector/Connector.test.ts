@@ -20,14 +20,14 @@ import {
   xeroGetBalanceSheetConvertedRequest,
   xeroGetBalanceSheetResponse,
   xeroGetBalanceSheetConvertedResponse,
-} from './__data__/xero';
+} from './__test_data__/xero';
 
 import {
   myobGetBalanceSheetRequest,
   myobGetBalanceSheetConvertedRequest,
   myobGetBalanceSheetResponse,
   myobGetBalanceSheetConvertedResponse,
-} from './__data__/myob';
+} from './__test_data__/myob';
 
 import simulatedBalanceSheet from './__simulation_data__/balanceSheet';
 

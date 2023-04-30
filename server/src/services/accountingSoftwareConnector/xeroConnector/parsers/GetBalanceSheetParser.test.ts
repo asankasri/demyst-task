@@ -4,7 +4,7 @@ import {
   xeroGetBalanceSheetConvertedRequest,
   xeroGetBalanceSheetResponse,
   xeroGetBalanceSheetConvertedResponse,
-} from '../../__data__/xero';
+} from '../../__test_data__/xero';
 
 describe('Xero GetBalanceSheetParser', () => {
   const parser = new GetBalanceSheetParser();

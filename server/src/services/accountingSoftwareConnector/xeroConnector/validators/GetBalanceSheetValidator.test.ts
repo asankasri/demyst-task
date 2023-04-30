@@ -1,5 +1,5 @@
 import { GetBalanceSheetValidator } from '../../xeroConnector/validators/GetBalanceSheetValidator';
-import { xeroGetBalanceSheetRequest } from '../../__data__/xero';
+import { xeroGetBalanceSheetRequest } from '../../__test_data__/xero';
 
 describe('Xero GetBalanceSheetValidator', () => {
   const validator = new GetBalanceSheetValidator();

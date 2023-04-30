@@ -1,7 +1,10 @@
 import { MYOBApi } from '../myobConnector/MYOBApi';
 import { ApiPaths } from '../myobConnector/enums';
 import { ApiMethod } from '../enums';
-import { myobGetBalanceSheetConvertedRequest, myobGetBalanceSheetResponse } from '../__data__/myob';
+import {
+  myobGetBalanceSheetConvertedRequest,
+  myobGetBalanceSheetResponse,
+} from '../__test_data__/myob';
 
 const mockGet = jest.fn().mockResolvedValueOnce({ data: myobGetBalanceSheetResponse });
 

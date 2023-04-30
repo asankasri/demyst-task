@@ -4,7 +4,7 @@ import {
   myobGetBalanceSheetConvertedRequest,
   myobGetBalanceSheetResponse,
   myobGetBalanceSheetConvertedResponse,
-} from '../../__data__/myob';
+} from '../../__test_data__/myob';
 
 describe('MYOB GetBalanceSheetParser', () => {
   const parser = new GetBalanceSheetParser();

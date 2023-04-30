@@ -1,5 +1,5 @@
 import { GetBalanceSheetValidator } from '../../myobConnector/validators/GetBalanceSheetValidator';
-import { myobGetBalanceSheetRequest } from '../../__data__/myob';
+import { myobGetBalanceSheetRequest } from '../../__test_data__/myob';
 
 describe('MYOB GetBalanceSheetValidator', () => {
   const validator = new GetBalanceSheetValidator();

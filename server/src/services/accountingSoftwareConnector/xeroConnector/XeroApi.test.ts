@@ -1,7 +1,10 @@
 import { XeroApi } from '../xeroConnector/XeroApi';
 import { ApiPaths } from '../xeroConnector/enums';
 import { ApiMethod } from '../enums';
-import { xeroGetBalanceSheetConvertedRequest, xeroGetBalanceSheetResponse } from '../__data__/xero';
+import {
+  xeroGetBalanceSheetConvertedRequest,
+  xeroGetBalanceSheetResponse,
+} from '../__test_data__/xero';
 
 const mockGet = jest.fn().mockResolvedValueOnce({ data: xeroGetBalanceSheetResponse });
 
