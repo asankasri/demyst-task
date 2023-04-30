@@ -38,7 +38,11 @@ export const applyRoutes = (routes: Route[], router: Router, version = 'v1'): vo
   for (const route of routes) {
     const { method, path, handler, middleware } = route;
     if ((handler as any)[version]) {
-      (router as any)[method](`/${version}` + path, middleware || dummyMiddleware, (handler as any)[version]);
+      (router as any)[method](
+        `/${version}` + path,
+        middleware || dummyMiddleware,
+        (handler as any)[version],
+      );
     } else {
       console.warn(`${path} not available in api ${version}`);
     }

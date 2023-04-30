@@ -15,5 +15,17 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    'max-len': [
+      'error',
+      {
+        code: 100,
+        tabWidth: 2,
+        ignoreUrls: true,
+        ignoreComments: true,
+        ignoreRegExpLiterals: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ],
   },
 };
