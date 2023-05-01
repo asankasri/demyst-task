@@ -3,11 +3,11 @@ export type GetBalanceSheetRequest = {
   toDate?: string;
 };
 
-type BalanceSheet = {
+export type BalanceSheetItem = {
   year: number;
   month: number;
   profitOrLoss: number;
   assetsValue: number;
 };
 
-export type GetBalanceSheetResponse = BalanceSheet[];
+export type GetBalanceSheetResponse = BalanceSheetItem[];
