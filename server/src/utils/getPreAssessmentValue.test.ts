@@ -44,7 +44,7 @@ describe('utils/getPreAssessmentValue', () => {
     jest.restoreAllMocks();
   });
 
-  test('should return default if teh balance sheet is empty', () => {
+  test('should return default if the balance sheet is empty', () => {
     const preAssessmentValue = getPreAssessmentValue({
       balanceSheet: [],
       loanAmount: 10000000,
