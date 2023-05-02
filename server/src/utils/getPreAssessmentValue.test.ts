@@ -34,7 +34,7 @@ const mockBalanceSheet: BalanceSheetItem[] = [
   },
 ];
 
-describe('utils/calculatePreAssessmentValue', () => {
+describe('utils/getPreAssessmentValue', () => {
   beforeEach(() => {
     jest.spyOn(Date.prototype, 'getFullYear').mockReturnValue(2023);
     jest.spyOn(Date.prototype, 'getMonth').mockReturnValue(5); // 5 is the index of June

@@ -1,4 +1,3 @@
-import balanceSheet from '../services/accountingSoftwareConnector/__simulation_data__/balanceSheet';
 import { BalanceSheetItem } from './../services/accountingSoftwareConnector/types/getBalanceSheet';
 import getYearAndMonthOfTwelveMonthsAgo from './getYearAndMonthOfTwelveMonthsAgo';
 
