@@ -3,7 +3,7 @@ import { when } from 'jest-when';
 import { Connector } from './Connector';
 import { DummyParserFactory } from './DummyParserFactory';
 import { DummyValidatorFactory } from './DummyValidatorFactory';
-import { ApiMethod } from './enums';
+import { HttpMethod } from '../../enums';
 
 import { XeroApi } from './xeroConnector/XeroApi';
 import { ApiPaths as XeroApiPaths } from './xeroConnector/enums';
@@ -106,7 +106,7 @@ describe('Connector', () => {
         const balanceSheet = await xeroConnector.getBalanceSheet(xeroGetBalanceSheetRequest);
 
         expect(performRequestSpy).toHaveBeenLastCalledWith(
-          ApiMethod.Get,
+          HttpMethod.Get,
           XeroApiPaths.GetBalanceSheet,
           xeroGetBalanceSheetConvertedRequest,
           undefined,
@@ -172,7 +172,7 @@ describe('Connector', () => {
         const balanceSheet = await myobConnector.getBalanceSheet(myobGetBalanceSheetRequest);
 
         expect(performRequestSpy).toHaveBeenLastCalledWith(
-          ApiMethod.Get,
+          HttpMethod.Get,
           MYOBApiPaths.GetBalanceSheet,
           myobGetBalanceSheetConvertedRequest,
           undefined,

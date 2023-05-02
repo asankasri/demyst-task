@@ -2,7 +2,7 @@ import HttpClient, { HttpClientInterface } from '../../../utils/httpClient';
 
 import { ConnectorInterface } from '../ConnectorInterface';
 import { ApiPaths } from './enums';
-import { ApiMethod } from '../enums';
+import { HttpMethod } from '../../../enums';
 
 export class XeroApi implements ConnectorInterface {
   private httpClient: HttpClientInterface;
@@ -13,7 +13,7 @@ export class XeroApi implements ConnectorInterface {
 
   public async getBalanceSheet(request: any): Promise<any> {
     const response = await this.performRequest(
-      ApiMethod.Get,
+      HttpMethod.Get,
       ApiPaths.GetBalanceSheet,
       request,
       undefined,
@@ -30,16 +30,16 @@ export class XeroApi implements ConnectorInterface {
         .join('&')}`;
     }
 
-    if (method === ApiMethod.Post) {
+    if (method === HttpMethod.Post) {
       return this.performPostRequest(url, body);
     }
-    if (method === ApiMethod.Put) {
+    if (method === HttpMethod.Put) {
       return this.performPutRequest(url, body);
     }
-    if (method === ApiMethod.Patch) {
+    if (method === HttpMethod.Patch) {
       return this.performPatchRequest(url, body);
     }
-    if (method === ApiMethod.Delete) {
+    if (method === HttpMethod.Delete) {
       return this.performDeleteRequest(url);
     }
     return this.performGetRequest(url);

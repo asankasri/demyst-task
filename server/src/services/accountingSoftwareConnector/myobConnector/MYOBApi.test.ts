@@ -1,6 +1,6 @@
 import { MYOBApi } from '../myobConnector/MYOBApi';
 import { ApiPaths } from '../myobConnector/enums';
-import { ApiMethod } from '../enums';
+import { HttpMethod } from '../../../enums';
 import {
   myobGetBalanceSheetConvertedRequest,
   myobGetBalanceSheetResponse,
@@ -30,7 +30,7 @@ describe('MYOBApi', () => {
     const balanceSheet = await api.getBalanceSheet(myobGetBalanceSheetConvertedRequest);
 
     expect(performRequestSpy).toHaveBeenLastCalledWith(
-      ApiMethod.Get,
+      HttpMethod.Get,
       ApiPaths.GetBalanceSheet,
       myobGetBalanceSheetConvertedRequest,
       undefined,

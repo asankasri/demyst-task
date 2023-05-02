@@ -1,6 +1,6 @@
 import { XeroApi } from '../xeroConnector/XeroApi';
 import { ApiPaths } from '../xeroConnector/enums';
-import { ApiMethod } from '../enums';
+import { HttpMethod } from '../../../enums';
 import {
   xeroGetBalanceSheetConvertedRequest,
   xeroGetBalanceSheetResponse,
@@ -30,7 +30,7 @@ describe('XeroApi', () => {
     const balanceSheet = await api.getBalanceSheet(xeroGetBalanceSheetConvertedRequest);
 
     expect(performRequestSpy).toHaveBeenLastCalledWith(
-      ApiMethod.Get,
+      HttpMethod.Get,
       ApiPaths.GetBalanceSheet,
       xeroGetBalanceSheetConvertedRequest,
       undefined,
