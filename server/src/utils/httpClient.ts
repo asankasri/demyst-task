@@ -2,7 +2,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 export interface HttpClientInterface {
-  get(url: string): Promise<AxiosResponse<any>>;
+  get(url: string, body?: any): Promise<AxiosResponse<any>>;
   post(url: string, body: any): Promise<AxiosResponse<any>>;
   put(url: string, body: any): Promise<AxiosResponse<any>>;
   patch(url: string, body: any): Promise<AxiosResponse<any>>;
@@ -19,8 +19,8 @@ export default class HttpClient {
     });
   }
 
-  get(url: string): any {
-    return this.axiosInstance.get(url);
+  get(url: string, body?: Record<string, unknown>): any {
+    return this.axiosInstance.get(url, { data: body });
   }
 
   post(url: string, body: Record<string, unknown>): any {
