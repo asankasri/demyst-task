@@ -8,6 +8,13 @@ type BusinessDetails = {
   establishedYear: number;
 };
 
+type AccountingProvider = {
+  id: string;
+  label: string;
+};
+
+export type GetAccountingProvidersResponse = AccountingProvider[];
+
 export type GetBalanceSheetRequest = {
   businessDetails: BusinessDetails;
   loanAmount: number;

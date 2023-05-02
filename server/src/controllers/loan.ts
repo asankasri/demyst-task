@@ -1,4 +1,5 @@
 import {
+  GetAccountingProvidersResponse,
   GetBalanceSheetRequest,
   GetBalanceSheetResponse,
   AccountingSoftwareKey,
@@ -12,6 +13,16 @@ import getConfig from '../utils/getConfig';
 import getPreAssessmentValue from '../utils/getPreAssessmentValue';
 
 const config = getConfig();
+
+/**
+ * Get the list of Accounting Providers
+ * @return GetAccountingProvidersResponse
+ */
+export const getAccountingProviders = async (): Promise<GetAccountingProvidersResponse> =>
+  Object.values(accountingSoftwares).map((software) => ({
+    id: software.id,
+    label: software.label,
+  }));
 
 /**
  * Get the balance sheet

@@ -1,12 +1,29 @@
 import { Request, Response } from 'express';
 
 import { Route, Methods } from '../utils';
-import { getBalanceSheet, submitApplication } from '../controllers/loan';
+import { getAccountingProviders, getBalanceSheet, submitApplication } from '../controllers/loan';
 import { accountingSoftwares } from '../constants';
 import { ErrorWithMessage } from '../services/accountingSoftwareConnector/types';
-import { BalanceSheetItem } from './../services/accountingSoftwareConnector/types/getBalanceSheet';
 
 export default [
+  {
+    path: '/getAccountingProviders',
+    method: Methods.GET,
+    handler: {
+      v1: [
+        async (req: Request, res: Response): Promise<void> => {
+          try {
+            const result = await getAccountingProviders();
+
+            res.status(200).json(result);
+          } catch (e) {
+            console.log({ e });
+            res.status(500).json({ message: (e as ErrorWithMessage).message });
+          }
+        },
+      ],
+    },
+  },
   {
     path: '/getBalanceSheet',
     method: Methods.GET,
