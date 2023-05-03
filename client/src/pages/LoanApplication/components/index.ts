@@ -1,1 +1,5 @@
-export { default as FormContent } from './FormContent';
+import FormContent from "./FormContent";
+
+export {
+  FormContent
+};

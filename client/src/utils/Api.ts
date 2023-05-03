@@ -2,7 +2,7 @@ import HttpClient, { HttpClientRequestBody } from "./HttpClient";
 
 const BASE_URL = "http://localhost:3001"; // todo set as an environment variable
 
-const getAxiosInstance = () => new HttpClient(BASE_URL);
+const httpClientInstance = new HttpClient(BASE_URL);
 
 export type AccountingProviderType = {
   id: string;
@@ -43,16 +43,16 @@ export type SubmitApplicationResponseType = {
 }
 
 export async function getAccountingProviders(): Promise<AccountingProviderType[]> {
-  const response = await getAxiosInstance().get("/v1/getAccountingProviders");
+  const response = await httpClientInstance.get("/v1/getAccountingProviders");
   return response.data as AccountingProviderType[];
 }
 
 export async function getBalanceSheet(requestBody: GetBalanceSheetRequestBodyType): Promise<GetBalanceSheetResponseType> {
-  const response = await getAxiosInstance().get("/v1/getBalanceSheet", requestBody as unknown as HttpClientRequestBody);
+  const response = await httpClientInstance.get("/v1/getBalanceSheet", requestBody as unknown as HttpClientRequestBody);
   return response.data as GetBalanceSheetResponseType;
 }
 
 export async function submitApplication(requestBody: SubmitApplicationRequestBodyType): Promise<SubmitApplicationResponseType> {
-  const response = await getAxiosInstance().post("/v1/submitApplication", requestBody as unknown as HttpClientRequestBody);
+  const response = await httpClientInstance.post("/v1/submitApplication", requestBody as unknown as HttpClientRequestBody);
   return response.data as SubmitApplicationResponseType;
 }
