@@ -4,6 +4,7 @@ import { Route, Methods } from '../utils';
 import { getAccountingProviders, getBalanceSheet, submitApplication } from '../controllers/loan';
 import { accountingSoftwares } from '../constants';
 import { ErrorWithMessage } from '../services/accountingSoftwareConnector/types';
+import { AccountingSoftwareKey } from '../types/loanController';
 
 export default [
   {
@@ -31,13 +32,15 @@ export default [
       v1: [
         async (req: Request, res: Response): Promise<void> => {
           try {
-            const { body: { businessDetails, loanAmount, accountingProvider } = {} } = req;
+            const {
+              query: { businessName, businessEstablishedYear, loanAmount, accountingProvider } = {},
+            } = req;
 
             if (!accountingProvider) {
               throw new Error('Empty accounting provider');
             }
 
-            if (!Object.keys(accountingSoftwares).includes(accountingProvider)) {
+            if (!Object.keys(accountingSoftwares).includes(accountingProvider as string)) {
               throw new Error('Invalid accounting provider');
             }
 
@@ -45,14 +48,17 @@ export default [
               throw new Error('Empty loan amount');
             }
 
-            if (isNaN(loanAmount)) {
+            if (isNaN((loanAmount as unknown) as number)) {
               throw new Error('Non-integer loan amount');
             }
 
             const result = await getBalanceSheet({
-              businessDetails,
+              businessDetails: {
+                name: businessName as string,
+                establishedYear: Number(businessEstablishedYear),
+              },
               loanAmount: Number(loanAmount),
-              accountingProvider,
+              accountingProvider: accountingProvider as AccountingSoftwareKey,
             });
 
             res.status(200).json(result);
