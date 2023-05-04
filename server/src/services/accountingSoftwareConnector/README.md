@@ -4,7 +4,7 @@ This will provide the connection to the different accounting softwares with same
 
 *Assumption: The endpoints provided by accounting softwares are RESTful APIs.*
 
-### What is does
+### What this does
 
 Basically the connector is middle man of the application and the accounting softwares. For a given function it performs the below actions.
 * Receive the request provided by the application
@@ -18,7 +18,7 @@ Basically the connector is middle man of the application and the accounting soft
 * Xero
 * MYOB
 
-### Currretly supported functions
+### Currently supported functions
 * getBalanceSheet
 
 ### How to use
@@ -49,10 +49,10 @@ try {
 
 Examples config values values:
 
-* connectorId --> XERO
-* connectorAPIBaseURL: https://api.xero.com/finance.xro/1.0
-* connectorAPIHeaders: { Authentication: 'Bearer xxxxxxxxxx' }
-* isSimulationEnabled: false (if set to true, the actual API will not be called and return hardcoded data instead)
+* `connectorId`: `XERO`
+* `connectorAPIBaseURL`: `https://api.xero.com/finance.xro/1.0`
+* `connectorAPIHeaders`: `{ Authentication: 'Bearer xxxxxxxxxx' }`
+* `isSimulationEnabled`: `false` (if set to true, the actual API will not be called and return hardcoded data instead)
 
 ### How to expand
 
