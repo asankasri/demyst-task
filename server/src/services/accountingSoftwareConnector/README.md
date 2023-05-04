@@ -45,7 +45,7 @@ try {
     console.log(error);
     throw error;
 }
-````
+```
 
 Examples config values values:
 
