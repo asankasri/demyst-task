@@ -1,6 +1,6 @@
 # Demyst Task
 
-Solution of the task, https://github.com/DemystData/code-kata.
+Solution of the Demyst task (https://github.com/DemystData/code-kata)
 
 Implemented by: *Asanka Piyasekara*
 
@@ -45,6 +45,7 @@ Run `yarn test` to run the tests (of both client and server).
 ### Notes to the reviewer ###
 
 * Neither a state management library nor React Context API have been used in the React app. Instead data fetching has been done in `useEffect()` and pass the data to the child components as Props.
-* I would have loved to write more unit tests, but just tried to write tests for more critical logics only.
+* It would have been great to have more unit tests, but I just tried to write tests for more critical logics only.
 * No database has been used to keep the implementation simple.
-* As discussed, I didn't bother about UI styling and kept it very simple.
+* As discussed, there is no UI styling and it is very simple.
+* There is a documentation of Accounting Software Connector. (Refer [README](./server/src/services/accountingSoftwareConnector/README.md)).

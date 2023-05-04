@@ -1,6 +1,6 @@
 ## Demyst Task - Server
 
-Server side implementation of the task, https://github.com/DemystData/code-kata.
+Server side implementation of the Demyst task (https://github.com/DemystData/code-kata).
 
 ### Main Technologies
 
@@ -16,9 +16,9 @@ Server side implementation of the task, https://github.com/DemystData/code-kata.
 
 ### Environments variables
 
-* `SERVER_PORT` (default=3001)
-* `XERO_BASE_URL` (default=https://api.xero.com/finance.xro/1.0)
-* `MYOB_BASE_URL` (default=https://arl2.api.myob.com)
-* `DECISION_ENGINE_BASE_URL` (default=https://my-decision-engine.com)
-* `ENABLE_ACCOUNTING_SOFTWARE_SIMULATION` (default=false)
-* `ENABLE_DECISION_ENGINE_SIMULATION` (default=false)
+* `SERVER_PORT` (default=`3001`)
+* `XERO_BASE_URL` (default=`https://api.xero.com/finance.xro/1.0`)
+* `MYOB_BASE_URL` (default=`https://arl2.api.myob.com`)
+* `DECISION_ENGINE_BASE_URL` (default=`https://my-decision-engine.com`)
+* `ENABLE_ACCOUNTING_SOFTWARE_SIMULATION` (default=`false`)
+* `ENABLE_DECISION_ENGINE_SIMULATION` (default=`false`)

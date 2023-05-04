@@ -1,6 +1,6 @@
 ## Demyst Task - Client
 
-Client side implementation of the task, https://github.com/DemystData/code-kata.
+Client side implementation of the Demyst task (https://github.com/DemystData/code-kata).
 
 ### Main Technologies / frameworks
 * React
