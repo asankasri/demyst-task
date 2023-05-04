@@ -2,8 +2,6 @@ import HttpClient, { HttpClientRequestBody } from "./HttpClient";
 
 const BASE_URL = "http://localhost:3001"; // todo set as an environment variable
 
-const httpClientInstance = new HttpClient(BASE_URL);
-
 export type AccountingProviderType = {
   id: string;
   label: string;
@@ -43,16 +41,22 @@ export type SubmitApplicationResponseType = {
 }
 
 export async function getAccountingProviders(): Promise<AccountingProviderType[]> {
+  const httpClientInstance = new HttpClient(BASE_URL);
+
   const response = await httpClientInstance.get("/v1/getAccountingProviders");
   return response.data as AccountingProviderType[];
 }
 
 export async function getBalanceSheet(requestBody: GetBalanceSheetRequestBodyType): Promise<GetBalanceSheetResponseType> {
+  const httpClientInstance = new HttpClient(BASE_URL);
+
   const response = await httpClientInstance.get("/v1/getBalanceSheet", requestBody as unknown as HttpClientRequestBody);
   return response.data as GetBalanceSheetResponseType;
 }
 
 export async function submitApplication(requestBody: SubmitApplicationRequestBodyType): Promise<SubmitApplicationResponseType> {
+  const httpClientInstance = new HttpClient(BASE_URL);
+
   const response = await httpClientInstance.post("/v1/submitApplication", requestBody as unknown as HttpClientRequestBody);
   return response.data as SubmitApplicationResponseType;
 }

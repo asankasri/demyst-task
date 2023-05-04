@@ -30,6 +30,7 @@ const FormContentStepOne = ({
       <Col md="6" xs="12">
         <Form.Label htmlFor="accountingProvider">Accounting Provider</Form.Label>
         <Form.Select
+          data-testid="accounting-provider-select-input"
           id="accountingProvider"
           required
           value={selectedAccountingProvider}
@@ -46,6 +47,7 @@ const FormContentStepOne = ({
       <Col md="6" xs="12">
         <Form.Label htmlFor="businessName">Business Name</Form.Label>
         <Form.Control
+          data-testid="business-name-text-input"
           type="text"
           id="businessName"
           required
@@ -56,6 +58,7 @@ const FormContentStepOne = ({
       <Col md="6" xs="12">
         <Form.Label htmlFor="businessEstablishedYear">Business Established Year</Form.Label>
         <Form.Select
+          data-testid="business-year-select-input"
           id="businessEstablishedYear"
           required
           value={businessEstablishedYear}
@@ -72,6 +75,7 @@ const FormContentStepOne = ({
       <Col md="6" xs="12">
         <Form.Label htmlFor="loanAmount">Loan Amount</Form.Label>
         <Form.Control
+          data-testid="loan-amount-text-input"
           type="number"
           id="loanAmount"
           required

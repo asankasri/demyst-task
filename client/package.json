@@ -45,5 +45,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-jest": "^29.5.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": ["node_modules/(?!@shotgunjed)/"]
   }
 }

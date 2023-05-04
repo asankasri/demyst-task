@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosHeaders, AxiosResponse } from 'axios';
 
 export interface HttpClientInterface {
   get(url: string): Promise<AxiosResponse<any>>;
@@ -13,31 +13,40 @@ export type HttpClientRequestBody = {
 };
 
 export default class HttpClient {
-  private axiosInstance: AxiosInstance;
+  constructor(private baseURL: string, private headers?: AxiosHeaders) {}
 
-  constructor(private baseUrl: string, private headers?: object) {
-    this.axiosInstance = axios.create({
-      baseURL: this.baseUrl,
-      headers: this.headers,
+  private getFullURL(path: string) {
+    return `${this.baseURL.replace(/^\/|\/$/g, '')}/${path.replace(/^\/|\/$/g, '')}`;
+  }
+
+  get(path: string, params?: HttpClientRequestBody) {
+    return axios.get(this.getFullURL(path), {
+      params,
+      headers: this.headers
     });
   }
-  get(url: string, params?: HttpClientRequestBody) {
-    return this.axiosInstance.get(url, { params });
+
+  post(path: string, body: HttpClientRequestBody) {
+    return axios.post(this.getFullURL(path), body, {
+      headers: this.headers
+    });
   }
 
-  post(url: string, body: HttpClientRequestBody) {
-    return this.axiosInstance.post(url, body);
+  put(path: string, body: HttpClientRequestBody) {
+    return axios.put(this.getFullURL(path), body, {
+      headers: this.headers
+    });
   }
 
-  put(url: string, body: HttpClientRequestBody) {
-    return this.axiosInstance.put(url, body);
+  patch(path: string, body: HttpClientRequestBody) {
+    return axios.patch(this.getFullURL(path), body, {
+      headers: this.headers
+    });
   }
 
-  patch(url: string, body: HttpClientRequestBody) {
-    return this.axiosInstance.patch(url, body);
-  }
-
-  delete(url: string) {
-    return this.axiosInstance.delete(url);
+  delete(path: string) {
+    return axios.delete(this.getFullURL(path), {
+      headers: this.headers
+    });
   }
 }

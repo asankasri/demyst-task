@@ -118,6 +118,7 @@ const LoanApplication = () => {
       <Row className="mb-3">
         <Col md="6" xs="12">
           <Button
+            data-testid="submit-button"
             variant="primary"
             disabled={!!!selectedAccountingProvider || !!!businessName || !!!businessEstablishedYear || !!!loanAmount}
             onClick={handleSubmit}

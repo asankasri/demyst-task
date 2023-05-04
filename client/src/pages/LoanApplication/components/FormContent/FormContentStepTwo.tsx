@@ -18,7 +18,7 @@ const FormContentStepTwo = ({ balanceSheet }: { balanceSheet: BalanceSheetItemTy
         </thead>
         <tbody>
           {balanceSheet.map(item => (
-            <tr>
+            <tr key={`${item.year}-${item.month}`}>
               <td>{getYearAndMonthLabel(item.year, item.month)}</td>
               <td>{getFormattedNumber(item.profitOrLoss)}</td>
               <td>{getFormattedNumber(item.assetsValue)}</td>
