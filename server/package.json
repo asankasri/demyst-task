@@ -7,7 +7,6 @@
   "author": "Asanka Piyasekara <asankasri@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npx tsc",
     "dev": "ts-node-dev --poll src/server.ts",
     "build": "tsc",
     "start": "npm run serve",
