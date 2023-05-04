@@ -40,6 +40,7 @@ Run `yarn test` to run the tests (of both client and server).
 ### Possible future enhancements
 
 * Better error handling and logging.
+* Better input validation.
 * Write more unit tests in both client and server.
 
 ### Notes to the reviewer ###
