@@ -49,3 +49,8 @@ Run `yarn test` to run the tests (of both client and server).
 * No database has been used to keep the implementation simple.
 * As discussed, there is no UI styling and it is very simple.
 * There is a documentation of Accounting Software Connector. (Refer [README](./server/src/services/accountingSoftwareConnector/README.md)).
+
+### Simulation ###
+
+* Accounting Software Connector is just returning a hardcoded Balance Sheet.
+* Decision Engine connector returns `{approved:true}` if the loan amount has less than 10 digits, else it returns `{approved:false}`.
