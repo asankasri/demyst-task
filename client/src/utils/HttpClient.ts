@@ -16,7 +16,7 @@ export default class HttpClient {
   constructor(private baseURL: string, private headers?: AxiosHeaders) {}
 
   private getFullURL(path: string) {
-    return `${this.baseURL.replace(/^\/|\/$/g, '')}/${path.replace(/^\/|\/$/g, '')}`;
+    return `${this.baseURL.replace(/\/$/g, '')}/${path.replace(/^\/|\/$/g, '')}`;
   }
 
   get(path: string, params?: HttpClientRequestBody) {
